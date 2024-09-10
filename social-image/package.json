@@ -1,0 +1,26 @@
+{
+	"name": "image-converter",
+	"version": "1.0.0",
+	"description": "Convert JPG images to PNG and resize them",
+	"main": "convert-images.ts",
+	"scripts": {
+		"start": "tsx convert-images.ts"
+	},
+	"keywords": [
+		"image",
+		"converter",
+		"sharp",
+		"typescript"
+	],
+	"author": "Your Name",
+	"license": "MIT",
+	"dependencies": {
+		"sharp": "^0.32.6"
+	},
+	"devDependencies": {
+		"@types/node": "^18.15.11",
+		"@types/sharp": "^0.31.1",
+		"tsx": "^3.12.7",
+		"typescript": "^5.0.4"
+	}
+}
