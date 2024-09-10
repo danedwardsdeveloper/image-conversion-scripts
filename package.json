@@ -1,12 +1,27 @@
 {
-  "name": "image-conversion-scripts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "image-converter",
+	"version": "1.0.0",
+	"description": "Convert JPG images to PNG and resize them",
+	"main": "convert-images.ts",
+	"type": "module",
+	"scripts": {
+		"build": "tsc src/social-image.ts"
+	},
+	"keywords": [
+		"image",
+		"converter",
+		"sharp",
+		"typescript"
+	],
+	"author": "Your Name",
+	"license": "MIT",
+	"dependencies": {
+		"sharp": "^0.32.6"
+	},
+	"devDependencies": {
+		"@types/node": "^18.15.11",
+		"@types/sharp": "^0.31.1",
+		"tsx": "^3.12.7",
+		"typescript": "^5.0.4"
+	}
 }
