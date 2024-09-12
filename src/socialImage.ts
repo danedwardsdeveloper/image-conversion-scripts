@@ -8,21 +8,38 @@ if (!inputPath) {
 }
 
 const fileExtension = path.extname(inputPath).toLowerCase();
-if (fileExtension !== '.jpg' && fileExtension !== '.jpeg') {
-	console.error('This script only works with JPG/JPEG files');
+const supportedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.gif'];
+
+if (!supportedExtensions.includes(fileExtension)) {
+	console.error(
+		`This script works with ${supportedExtensions.join(', ')} files`
+	);
 	process.exit(1);
 }
 
-const outputPath = path.join(
-	path.dirname(inputPath),
-	`${path.basename(inputPath, fileExtension)}.png`
-);
+let outputFileName;
+if (fileExtension === '.png') {
+	outputFileName = `${path.basename(
+		inputPath,
+		fileExtension
+	)}-resized${fileExtension}`;
+} else {
+	outputFileName = path.basename(inputPath);
+}
 
-sharp(inputPath)
-	.resize(1200, 675)
-	.png()
+const outputPath = path.join(path.dirname(inputPath), outputFileName);
+
+let imageProcess = sharp(inputPath);
+
+if (fileExtension === '.png') {
+	imageProcess = imageProcess.resize(1200, 675);
+} else {
+	imageProcess = imageProcess.resize(1200, 675).png();
+}
+
+imageProcess
 	.toFile(outputPath)
 	.then(() => {
-		console.log(`Converted and saved: ${outputPath}`);
+		console.log(`Processed and saved: ${outputPath}`);
 	})
 	.catch((err) => console.error('Error processing image:', err));
